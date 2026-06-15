@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shop All Toys – Wonder of Toys</title>
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --navy:   #1a2472;
+  --gold:   #f5c518;
+  --red:    #d42b2b;
+  --white:  #ffffff;
+  --cream:  #fffbf0;
+  --light:  #f0f4ff;
+  --text:   #1a1a2e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+/* Smooth scroll + offset for anchor links so the sticky navbar doesn't cover the target */
+html { scroll-behavior: smooth; }
+section[id], footer[id], div[id] { scroll-margin-top: 90px; }
+
+/* ── NAVBAR ── */
+.navbar-brand img {
+  height: 54px;
+  width: 54px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+.brand-name {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.5rem;
+  color: var(--navy);
+  line-height: 1.1;
+}
+.brand-name span { color: var(--red); }
+.navbar { background: var(--white); border-bottom: 3px solid var(--gold); }
+.nav-link {
+  font-weight: 700;
+  color: var(--navy) !important;
+  font-size: 0.95rem;
+  padding: 0.4rem 1rem !important;
+  border-radius: 20px;
+  transition: background 0.2s;
+}
+.nav-link:hover { background: var(--gold); color: var(--navy) !important; }
+.nav-link.active { background: var(--navy); color: var(--white) !important; }
+.cart-btn {
+  background: var(--red);
+  color: var(--white) !important;
+  border-radius: 20px;
+  font-weight: 800;
+}
+.cart-btn:hover { background: var(--navy); color: var(--white) !important; }
+
+/* ── ANNOUNCEMENT BAR ── */
+.announce-bar {
+  background: var(--navy);
+  color: var(--gold);
+  text-align: center;
+  padding: 8px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.5px;
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, #2a3a9c 55%, #1a2472 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 90px 0 70px;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 420px; height: 420px;
+  background: var(--gold);
+  border-radius: 50%;
+  opacity: 0.08;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -80px;
+  width: 300px; height: 300px;
+  background: var(--red);
+  border-radius: 50%;
+  opacity: 0.07;
+}
+.hero-eyebrow {
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 32px; height: 3px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+.hero h1 {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--gold);
+}
+.hero p {
+  color: rgba(255,255,255,0.82);
+  font-size: 1.1rem;
+  max-width: 460px;
+  margin-bottom: 32px;
+}
+.btn-hero-primary {
+  background: var(--gold);
+  color: var(--navy);
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 14px 32px;
+  border-radius: 50px;
+  border: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-hero-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(245,197,24,0.45);
+  background: var(--gold);
+  color: var(--navy);
+}
+.btn-hero-secondary {
+  background: transparent;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 14px 28px;
+  border-radius: 50px;
+  border: 2px solid rgba(255,255,255,0.4);
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-hero-secondary:hover {
+  border-color: var(--white);
+  background: rgba(255,255,255,0.1);
+  color: var(--white);
+}
+.hero-badge {
+  background: var(--red);
+  color: var(--white);
+  font-weight: 800;
+  font-size: 0.78rem;
+  padding: 5px 14px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-left: 12px;
+  vertical-align: middle;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+.hero-img-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.hero-logo-circle {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  border: 3px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  backdrop-filter: blur(4px);
+}
+.hero-logo-circle img {
+  width: 240px;
+  height: 240px;
+  object-fit: contain;
+  border-radius: 50%;
+  filter: drop-shadow(0 12px 32px rgba(0,0,0,0.3));
+}
+
+/* ── TRUST STRIP ── */
+.trust-strip {
+  background: var(--gold);
+  padding: 18px 0;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  color: var(--navy);
+  font-size: 0.92rem;
+}
+.trust-item i { font-size: 1.3rem; }
+
+/* ── SECTIONS COMMON ── */
+section { padding: 72px 0; }
+.section-label {
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  color: var(--navy);
+  margin-bottom: 0;
+}
+.section-sub {
+  color: #666;
+  font-size: 1rem;
+  margin-top: 10px;
+  max-width: 520px;
+}
+
+/* ── CATEGORIES ── */
+.categories-section { background: var(--light); }
+.cat-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 32px 20px;
+  text-align: center;
+  transition: transform 0.25s, box-shadow 0.25s;
+  cursor: pointer;
+  border: 2px solid transparent;
+  height: 100%;
+}
+.cat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(26,36,114,0.12);
+  border-color: var(--gold);
+}
+.cat-icon {
+  font-size: 2.8rem;
+  margin-bottom: 14px;
+  display: block;
+}
+.cat-card h5 {
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 5px;
+}
+.cat-card p { font-size: 0.88rem; color: #888; margin: 0; }
+
+/* ── FEATURED / SHOP PRODUCT CARDS ── */
+.product-card {
+  border: none;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+  background: var(--white);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(26,36,114,0.13);
+}
+.product-img-wrap {
+  background: var(--cream);
+  padding: 24px;
+  text-align: center;
+  font-size: 5rem;
+  line-height: 1;
+  position: relative;
+}
+.badge-sale {
+  position: absolute;
+  top: 12px; left: 12px;
+  background: var(--red);
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+.badge-new {
+  position: absolute;
+  top: 12px; left: 12px;
+  background: #22c55e;
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+/* Top part of the card (image + info) is wrapped in a link;
+   the bottom part (Add to Cart) stays a separate button so we
+   never nest a <button> inside an <a>. */
+.product-card .card-body-link { padding: 18px 18px 6px; flex: 1; }
+.product-card .card-body-action { padding: 0 18px 18px; }
+.product-age {
+  font-size: 0.78rem;
+  color: #888;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.product-card h6 {
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 6px;
+  font-size: 1rem;
+}
+.stars { color: var(--gold); font-size: 0.82rem; }
+.star-count { font-size: 0.8rem; color: #999; }
+.price-now {
+  font-weight: 900;
+  font-size: 1.15rem;
+  color: var(--red);
+}
+.price-old {
+  font-size: 0.88rem;
+  color: #bbb;
+  text-decoration: line-through;
+  margin-left: 6px;
+}
+.btn-add-cart {
+  background: var(--navy);
+  color: var(--white);
+  border: none;
+  border-radius: 50px;
+  padding: 8px 20px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  transition: background 0.2s, transform 0.15s;
+  width: 100%;
+}
+.btn-add-cart:hover {
+  background: var(--red);
+  color: var(--white);
+  transform: scale(1.03);
+}
+
+/* ── PROMO BANNER ── */
+.promo-banner {
+  background: linear-gradient(120deg, var(--red) 0%, #b71c1c 100%);
+  border-radius: 24px;
+  padding: 50px 40px;
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+.promo-banner::after {
+  content: '🎉';
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 7rem;
+  opacity: 0.2;
+}
+.promo-banner h2 {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin-bottom: 10px;
+}
+.promo-banner p { opacity: 0.88; font-size: 1.05rem; margin-bottom: 24px; }
+.btn-promo {
+  background: var(--gold);
+  color: var(--navy);
+  font-weight: 800;
+  padding: 12px 32px;
+  border-radius: 50px;
+  border: none;
+  font-size: 0.95rem;
+  transition: transform 0.2s;
+}
+.btn-promo:hover { transform: scale(1.05); color: var(--navy); background: var(--gold); }
+
+/* ── BRAND STORY ── */
+.story-section { background: var(--cream); }
+.story-number {
+  font-family: 'Fredoka One', cursive;
+  font-size: 5rem;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: -10px;
+}
+.story-card {
+  padding: 24px;
+  border-radius: 16px;
+  background: var(--white);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  height: 100%;
+}
+.story-card h5 { font-weight: 800; color: var(--navy); }
+.story-card p { color: #666; font-size: 0.94rem; }
+
+/* ── TESTIMONIALS ── */
+.testimonials-section { background: var(--light); }
+.testi-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+  height: 100%;
+  position: relative;
+}
+.testi-card::before {
+  content: '"';
+  font-family: Georgia, serif;
+  font-size: 5rem;
+  color: var(--gold);
+  position: absolute;
+  top: 8px; left: 22px;
+  line-height: 1;
+  opacity: 0.4;
+}
+.testi-text {
+  font-size: 0.97rem;
+  color: #444;
+  font-style: italic;
+  margin-top: 28px;
+  margin-bottom: 20px;
+}
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.testi-avatar {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+.testi-name { font-weight: 800; color: var(--navy); font-size: 0.9rem; }
+.testi-role { font-size: 0.8rem; color: #999; }
+
+/* ── NEWSLETTER ── */
+.newsletter-section { background: var(--navy); }
+.newsletter-section h2 {
+  font-family: 'Fredoka One', cursive;
+  color: var(--white);
+}
+.newsletter-section p { color: rgba(255,255,255,0.7); }
+.newsletter-input {
+  border-radius: 50px 0 0 50px;
+  border: none;
+  padding: 14px 22px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  outline: none;
+}
+.newsletter-input:focus { box-shadow: none; }
+.newsletter-btn {
+  background: var(--gold);
+  color: var(--navy);
+  border: none;
+  border-radius: 0 50px 50px 0;
+  padding: 14px 28px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+.newsletter-btn:hover { background: var(--red); color: var(--white); }
+
+/* ── FOOTER ── */
+footer {
+  background: #0d1340;
+  color: rgba(255,255,255,0.7);
+  padding: 60px 0 28px;
+}
+.footer-logo img {
+  height: 60px;
+  width: 60px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+.footer-brand {
+  font-family: 'Fredoka One', cursive;
+  color: var(--white);
+  font-size: 1.3rem;
+}
+.footer-brand span { color: var(--gold); }
+footer h6 {
+  color: var(--white);
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+}
+footer ul { list-style: none; padding: 0; }
+footer ul li { margin-bottom: 9px; }
+footer ul li a {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+footer ul li a:hover { color: var(--gold); }
+.footer-divider { border-color: rgba(255,255,255,0.12); margin: 28px 0; }
+.footer-bottom { font-size: 0.85rem; color: rgba(255,255,255,0.45); }
+.social-btn {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: background 0.2s, color 0.2s;
+  margin-right: 6px;
+}
+.social-btn:hover { background: var(--gold); color: var(--navy); }
+
+
+/* ═══════════════════════════════════════════════════════
+   PAGE HEADER — used at the top of shop.html / product.html
+   ═══════════════════════════════════════════════════════ */
+.page-header {
+  background: linear-gradient(135deg, var(--navy) 0%, #2a3a9c 100%);
+  padding: 36px 0 28px;
+}
+.page-header h1 {
+  font-family: 'Fredoka One', cursive;
+  color: var(--white);
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  margin: 4px 0 0;
+}
+.page-header .breadcrumb { margin: 0; }
+.page-header .breadcrumb-item a {
+  color: rgba(255,255,255,0.65);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+.page-header .breadcrumb-item a:hover { color: var(--gold); }
+.page-header .breadcrumb-item.active {
+  color: var(--gold);
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+.page-header .breadcrumb-item + .breadcrumb-item::before {
+  color: rgba(255,255,255,0.35);
+}
+
+/* ═══════════════════════════════════════════════════════
+   SHOP PAGE — category quick-links + sale strip
+   ═══════════════════════════════════════════════════════ */
+.shop-quicknav {
+  background: var(--white);
+  border-bottom: 1px solid #eee;
+  padding: 22px 0;
+}
+.shop-quicknav .nav-link {
+  font-weight: 800;
+  color: var(--navy) !important;
+  border: 2px solid var(--light);
+  border-radius: 50px;
+  padding: 8px 20px !important;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+.shop-quicknav .nav-link:hover {
+  background: var(--light);
+}
+.category-section:not(:last-of-type) {
+  border-bottom: 1px solid #eee;
+}
+.category-alt { background: var(--light); }
+.category-icon-badge {
+  font-size: 2.2rem;
+  background: var(--light);
+  border-radius: 16px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ═══════════════════════════════════════════════════════
+   PRODUCT DETAIL PAGE
+   ═══════════════════════════════════════════════════════ */
+.product-gallery {
+  background: var(--cream);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9rem;
+  min-height: 380px;
+  position: relative;
+}
+.product-category-tag {
+  display: inline-block;
+  background: var(--light);
+  color: var(--navy);
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  text-decoration: none;
+}
+.product-category-tag:hover { background: var(--gold); color: var(--navy); }
+.product-detail-title {
+  font-family: 'Fredoka One', cursive;
+  color: var(--navy);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  margin-bottom: 8px;
+}
+.product-detail-price {
+  font-weight: 900;
+  font-size: 2rem;
+  color: var(--red);
+}
+.product-detail-price .price-old {
+  font-size: 1.1rem;
+}
+
+/* Color swatches */
+.color-swatch {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: inline-flex;
+  cursor: pointer;
+  border: 3px solid transparent;
+  padding: 3px;
+  transition: transform 0.15s, border-color 0.15s;
+  position: relative;
+}
+.color-swatch span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.color-swatch input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.color-swatch:hover { transform: scale(1.08); }
+.color-swatch:has(input:checked) { border-color: var(--navy); }
+
+/* Quantity selector */
+.qty-selector { max-width: 130px; }
+.qty-selector .btn {
+  font-weight: 800;
+  color: var(--navy);
+  border-color: var(--light);
+  background: var(--light);
+}
+.qty-selector .btn:hover { background: var(--gold); border-color: var(--gold); }
+.qty-selector input {
+  border-color: var(--light);
+  font-weight: 800;
+  color: var(--navy);
+  text-align: center;
+}
+.qty-selector input:focus { box-shadow: none; border-color: var(--light); }
+
+/* Wishlist button */
+.btn-wishlist {
+  background: var(--white);
+  border: 2px solid var(--light);
+  color: var(--navy);
+  border-radius: 50px;
+  padding: 13px 24px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+.btn-wishlist:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+.product-detail-add-cart {
+  background: var(--navy);
+  color: var(--white);
+  border: none;
+  border-radius: 50px;
+  padding: 14px 36px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  transition: background 0.2s, transform 0.15s;
+}
+.product-detail-add-cart:hover {
+  background: var(--red);
+  color: var(--white);
+  transform: scale(1.02);
+}
+
+/* Delivery info box */
+.delivery-info {
+  background: var(--light);
+  border-radius: 16px;
+  padding: 18px 22px;
+}
+.delivery-info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+.delivery-info-item:not(:last-child) { margin-bottom: 10px; }
+.delivery-info-item i { color: var(--red); font-size: 1.15rem; width: 20px; text-align: center; }
+
+/* Tabs */
+.product-tabs .nav-link {
+  font-weight: 800;
+  color: #aaa;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 12px 6px;
+  margin-right: 28px;
+  border-radius: 0;
+}
+.product-tabs .nav-link:hover { color: var(--navy); background: transparent; }
+.product-tabs .nav-link.active {
+  color: var(--navy) !important;
+  border-bottom-color: var(--red);
+  background: transparent !important;
+}
+.product-tab-content { padding-top: 28px; }
+.product-tab-content p { color: #555; line-height: 1.8; }
+
+/* Spec table */
+.spec-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.92rem;
+}
+.spec-table tr:nth-child(odd) td { background: var(--light); }
+.spec-table td:first-child {
+  font-weight: 800;
+  color: var(--navy);
+  width: 220px;
+}
+
+/* Rating breakdown bars */
+.rating-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+.rating-bar-row .progress {
+  flex: 1;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--light);
+}
+.rating-bar-row .progress-bar { background: var(--gold); }
+.rating-bar-row span:first-child { width: 56px; }
+.rating-bar-row span:last-child { width: 36px; text-align: right; color: #999; font-weight: 700; }
+
+/* Individual written reviews */
+.review-item {
+  border-bottom: 1px solid #eee;
+  padding: 20px 0;
+}
+.review-item:last-child { border-bottom: none; }
+.review-item .review-name { font-weight: 800; color: var(--navy); }
+.review-item .review-date { font-size: 0.78rem; color: #999; }
+.review-item p { color: #555; margin-top: 8px; margin-bottom: 0; }
+
+  </style>
+  <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announce-bar">
+  🚀 FREE SHIPPING on orders over $30! &nbsp;|&nbsp; Use code <strong>WONDER10</strong> for 10% off &nbsp;|&nbsp; 🎁 Gift wrapping available!
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg sticky-top shadow-sm py-2">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+      <img src="WonderOfToys.jpg" alt="Wonder of Toys Logo"/>
+      <div class="brand-name">Wonder<br/><span>of Toys</span></div>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="shop.html">Shop</a></li>
+        <li class="nav-item"><a class="nav-link" href="shop.html#vehicles">Categories</a></li>
+        <li class="nav-item"><a class="nav-link" href="shop.html#sale">Sale</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-2">
+        <a href="#" class="nav-link"><i class="bi bi-search"></i></a>
+        <a href="#" class="nav-link"><i class="bi bi-heart"></i></a>
+        <a href="#" class="nav-link cart-btn px-3">
+          <i class="bi bi-bag-fill me-1"></i> Cart <span class="badge ms-1" style="background:var(--gold);color:var(--navy);font-size:0.7rem;">3</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Shop</li>
+      </ol>
+    </nav>
+    <h1>Shop All Toys</h1>
+  </div>
+</div>
+
+<!-- QUICK CATEGORY NAV -->
+<div class="shop-quicknav">
+  <div class="container">
+    <div class="d-flex gap-2 overflow-auto pb-1">
+      <a href="#sale" class="nav-link">🔥 Sale</a>
+      <a href="#vehicles" class="nav-link">🏎️ Vehicles</a>
+      <a href="#plushies" class="nav-link">🧸 Plushies</a>
+      <a href="#puzzles" class="nav-link">🧩 Puzzles</a>
+      <a href="#games" class="nav-link">🎮 Games</a>
+      <a href="#art-craft" class="nav-link">🎨 Art &amp; Craft</a>
+      <a href="#stem-toys" class="nav-link">🚀 STEM Toys</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ SALE ═══════════════ -->
+<section class="category-section" id="sale" style="background:var(--cream);">
+  <div class="container">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <div class="category-icon-badge" style="background:#ffe3e3;">🔥</div>
+      <div>
+        <div class="section-label">Limited Time</div>
+        <h2 class="section-title">On Sale Right Now</h2>
+      </div>
+    </div>
+    <div class="row g-4">
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              <span class="badge-sale">SALE −20%</span>
+              🏎️
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 3+</div>
+              <h6>Speed Racer Deluxe Set</h6>
+              <div class="mb-2"><span class="stars">★★★★★</span> <span class="star-count">(128)</span></div>
+              <div><span class="price-now">$18.99</span> <span class="price-old">$23.99</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              <span class="badge-sale">SALE −17%</span>
+              🐼
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 1+</div>
+              <h6>Giant Panda Pillow</h6>
+              <div class="mb-2"><span class="stars">★★★★★</span> <span class="star-count">(76)</span></div>
+              <div><span class="price-now">$24.99</span> <span class="price-old">$29.99</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              <span class="badge-sale">SALE −29%</span>
+              🧲
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 4+</div>
+              <h6>Magnetic Travel Puzzle</h6>
+              <div class="mb-2"><span class="stars">★★★★☆</span> <span class="star-count">(45)</span></div>
+              <div><span class="price-now">$9.99</span> <span class="price-old">$13.99</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              <span class="badge-sale">SALE −21%</span>
+              🧠
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 10+</div>
+              <h6>Trivia Night Family Edition</h6>
+              <div class="mb-2"><span class="stars">★★★★★</span> <span class="star-count">(62)</span></div>
+              <div><span class="price-now">$22.00</span> <span class="price-old">$28.00</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              <span class="badge-sale">SALE −15%</span>
+              🎨
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 4+</div>
+              <h6>Mega Art Studio Set</h6>
+              <div class="mb-2"><span class="stars">★★★★★</span> <span class="star-count">(211)</span></div>
+              <div><span class="price-now">$22.49</span> <span class="price-old">$26.49</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              <span class="badge-sale">SALE −25%</span>
+              🤖
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 10+</div>
+              <h6>Robo Builder Kit Pro</h6>
+              <div class="mb-2"><span class="stars">★★★★★</span> <span class="star-count">(87)</span></div>
+              <div><span class="price-now">$44.99</span> <span class="price-old">$59.99</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ VEHICLES ═══════════════ -->
+<section class="category-section" id="vehicles">
+  <div class="container">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <div class="category-icon-badge">🏎️</div>
+      <div>
+        <div class="section-label">Category</div>
+        <h2 class="section-title">Vehicles</h2>
+      </div>
+    </div>
+    <div class="row g-4">
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              <span class="badge-sale">SALE −20%</span>
+              🏎️
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 3+</div>
+              <h6>Speed Racer Deluxe Set</h6>
+              <div class="mb-2"><span class="stars">★★★★★</span> <span class="star-count">(128)</span></div>
+              <div><span class="price-now">$18.99</span> <span class="price-old">$23.99</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              🚒
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 3+</div>
+              <h6>Mini Fire Truck Playset</h6>
+              <div class="mb-2"><span class="stars">★★★★☆</span> <span class="star-count">(54)</span></div>
+              <div><span class="price-now">$15.99</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              <span class="badge-new">NEW</span>
+              🚙
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 6+</div>
+              <h6>Remote Control Off-Roader</h6>
+              <div class="mb-2"><span class="stars">★★★★★</span> <span class="star-count">(32)</span></div>
+              <div><span class="price-now">$39.99</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              🚂
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 2+</div>
+              <h6>Wooden Train Set</h6>
+              <div class="mb-2"><span class="stars">★★★★★</span> <span class="star-count">(98)</span></div>
+              <div><span class="price-now">$27.50</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PLUSHIES ═══════════════ -->
+<section class="category-section category-alt" id="plushies">
+  <div class="container">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <div class="category-icon-badge">🧸</div>
+      <div>
+        <div class="section-label">Category</div>
+        <h2 class="section-title">Plushies</h2>
+      </div>
+    </div>
+    <div class="row g-4">
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              <span class="badge-new">NEW</span>
+              🧸
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 1+</div>
+              <h6>Super Soft Teddy Bear</h6>
+              <div class="mb-2"><span class="stars">★★★★★</span> <span class="star-count">(94)</span></div>
+              <div><span class="price-now">$14.50</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              🦄
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 2+</div>
+              <h6>Rainbow Unicorn Plush</h6>
+              <div class="mb-2"><span class="stars">★★★★★</span> <span class="star-count">(167)</span></div>
+              <div><span class="price-now">$16.99</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              🐶
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 1+</div>
+              <h6>Sleepy Puppy Cuddle Toy</h6>
+              <div class="mb-2"><span class="stars">★★★★☆</span> <span class="star-count">(71)</span></div>
+              <div><span class="price-now">$13.99</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              <span class="badge-sale">SALE −17%</span>
+              🐼
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 1+</div>
+              <h6>Giant Panda Pillow</h6>
+              <div class="mb-2"><span class="stars">★★★★★</span> <span class="star-count">(76)</span></div>
+              <div><span class="price-now">$24.99</span> <span class="price-old">$29.99</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PUZZLES ═══════════════ -->
+<section class="category-section" id="puzzles">
+  <div class="container">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <div class="category-icon-badge">🧩</div>
+      <div>
+        <div class="section-label">Category</div>
+        <h2 class="section-title">Puzzles</h2>
+      </div>
+    </div>
+    <div class="row g-4">
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              🗺️
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 5+</div>
+              <h6>World Map Jigsaw 300pcs</h6>
+              <div class="mb-2"><span class="stars">★★★★☆</span> <span class="star-count">(58)</span></div>
+              <div><span class="price-now">$12.99</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              🟦
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 2+</div>
+              <h6>Wooden Shape Sorter</h6>
+              <div class="mb-2"><span class="stars">★★★★★</span> <span class="star-count">(40)</span></div>
+              <div><span class="price-now">$11.50</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              🐠
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 10+</div>
+              <h6>1000-Piece Ocean Puzzle</h6>
+              <div class="mb-2"><span class="stars">★★★★★</span> <span class="star-count">(29)</span></div>
+              <div><span class="price-now">$19.99</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              <span class="badge-sale">SALE −29%</span>
+              🧲
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 4+</div>
+              <h6>Magnetic Travel Puzzle</h6>
+              <div class="mb-2"><span class="stars">★★★★☆</span> <span class="star-count">(45)</span></div>
+              <div><span class="price-now">$9.99</span> <span class="price-old">$13.99</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ GAMES ═══════════════ -->
+<section class="category-section category-alt" id="games">
+  <div class="container">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <div class="category-icon-badge">🎮</div>
+      <div>
+        <div class="section-label">Category</div>
+        <h2 class="section-title">Games</h2>
+      </div>
+    </div>
+    <div class="row g-4">
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              <span class="badge-new">NEW</span>
+              🎲
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 8+</div>
+              <h6>Family Board Game Pack</h6>
+              <div class="mb-2"><span class="stars">★★★★★</span> <span class="star-count">(143)</span></div>
+              <div><span class="price-now">$34.00</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              🃏
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 6+</div>
+              <h6>Card Game Bundle</h6>
+              <div class="mb-2"><span class="stars">★★★★☆</span> <span class="star-count">(37)</span></div>
+              <div><span class="price-now">$9.99</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              🎴
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 4+</div>
+              <h6>Memory Match Challenge</h6>
+              <div class="mb-2"><span class="stars">★★★★★</span> <span class="star-count">(52)</span></div>
+              <div><span class="price-now">$12.50</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              <span class="badge-sale">SALE −21%</span>
+              🧠
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 10+</div>
+              <h6>Trivia Night Family Edition</h6>
+              <div class="mb-2"><span class="stars">★★★★★</span> <span class="star-count">(62)</span></div>
+              <div><span class="price-now">$22.00</span> <span class="price-old">$28.00</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ART & CRAFT ═══════════════ -->
+<section class="category-section" id="art-craft">
+  <div class="container">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <div class="category-icon-badge">🎨</div>
+      <div>
+        <div class="section-label">Category</div>
+        <h2 class="section-title">Art &amp; Craft</h2>
+      </div>
+    </div>
+    <div class="row g-4">
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              <span class="badge-sale">SALE −15%</span>
+              🎨
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 4+</div>
+              <h6>Mega Art Studio Set</h6>
+              <div class="mb-2"><span class="stars">★★★★★</span> <span class="star-count">(211)</span></div>
+              <div><span class="price-now">$22.49</span> <span class="price-old">$26.49</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              🖌️
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 5+</div>
+              <h6>Watercolor Paint Kit</h6>
+              <div class="mb-2"><span class="stars">★★★★☆</span> <span class="star-count">(48)</span></div>
+              <div><span class="price-now">$10.99</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              <span class="badge-new">NEW</span>
+              📿
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 6+</div>
+              <h6>DIY Friendship Bracelet Kit</h6>
+              <div class="mb-2"><span class="stars">★★★★★</span> <span class="star-count">(61)</span></div>
+              <div><span class="price-now">$13.99</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              🏺
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 4+</div>
+              <h6>Clay Modeling Set</h6>
+              <div class="mb-2"><span class="stars">★★★★☆</span> <span class="star-count">(39)</span></div>
+              <div><span class="price-now">$15.50</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ STEM TOYS ═══════════════ -->
+<section class="category-section category-alt" id="stem-toys">
+  <div class="container">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <div class="category-icon-badge">🚀</div>
+      <div>
+        <div class="section-label">Category</div>
+        <h2 class="section-title">STEM Toys</h2>
+      </div>
+    </div>
+    <div class="row g-4">
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              🚀
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 7+</div>
+              <h6>Galaxy Explorer STEM Kit</h6>
+              <div class="mb-2"><span class="stars">★★★★☆</span> <span class="star-count">(76)</span></div>
+              <div><span class="price-now">$29.99</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              <span class="badge-sale">SALE −25%</span>
+              🤖
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 10+</div>
+              <h6>Robo Builder Kit Pro</h6>
+              <div class="mb-2"><span class="stars">★★★★★</span> <span class="star-count">(87)</span></div>
+              <div><span class="price-now">$44.99</span> <span class="price-old">$59.99</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              <span class="badge-new">NEW</span>
+              🔌
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 8+</div>
+              <h6>Circuit Building Blocks</h6>
+              <div class="mb-2"><span class="stars">★★★★★</span> <span class="star-count">(54)</span></div>
+              <div><span class="price-now">$32.00</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="product-card card">
+          <a href="product.html" class="text-decoration-none text-reset">
+            <div class="product-img-wrap">
+              🪐
+            </div>
+            <div class="card-body-link">
+              <div class="product-age">Ages 6+</div>
+              <h6>Solar System Model Kit</h6>
+              <div class="mb-2"><span class="stars">★★★★☆</span> <span class="star-count">(43)</span></div>
+              <div><span class="price-now">$18.99</span></div>
+            </div>
+          </a>
+          <div class="card-body-action"><button type="button" class="btn-add-cart"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <div class="footer-logo d-flex align-items-center gap-2 mb-3">
+          <img src="WonderOfToys.jpg" alt="Wonder of Toys Logo"/>
+          <div class="footer-brand">Wonder <span>of Toys</span></div>
+        </div>
+        <p style="font-size:0.9rem;max-width:280px;">Bringing joy to children across Cambodia, one toy at a time. Trusted by 10,000+ families since 2020.</p>
+        <div class="mt-3">
+          <a href="#" class="social-btn"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="social-btn"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="bi bi-tiktok"></i></a>
+          <a href="#" class="social-btn"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6>Shop</h6>
+        <ul>
+          <li><a href="shop.html">New Arrivals</a></li>
+          <li><a href="shop.html">Best Sellers</a></li>
+          <li><a href="shop.html#sale">On Sale</a></li>
+          <li><a href="shop.html">Gift Sets</a></li>
+          <li><a href="shop.html">All Products</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6>Help</h6>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="index.html#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <h6>Contact</h6>
+        <ul>
+          <li><a href="#"><i class="bi bi-geo-alt me-2"></i>Street 123, Phnom Penh, Cambodia</a></li>
+          <li><a href="#"><i class="bi bi-telephone me-2"></i>+855 12 345 678</a></li>
+          <li><a href="#"><i class="bi bi-envelope me-2"></i>hello@wonderoftoys.com</a></li>
+          <li><a href="#"><i class="bi bi-clock me-2"></i>Mon – Sat: 8am – 8pm</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="footer-divider"/>
+    <div class="row align-items-center">
+      <div class="col-md-6 footer-bottom">
+        © 2025 Wonder of Toys. All rights reserved.
+      </div>
+      <div class="col-md-6 text-md-end footer-bottom mt-2 mt-md-0">
+        <a href="#" style="color:rgba(255,255,255,0.4);text-decoration:none;margin-left:16px;font-size:0.85rem;">Privacy Policy</a>
+        <a href="#" style="color:rgba(255,255,255,0.4);text-decoration:none;margin-left:16px;font-size:0.85rem;">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
